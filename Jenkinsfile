@@ -140,10 +140,10 @@ pipeline {
 
 	post {
         success {
-            slackSend channel: 'ci-cd', color: 'good', message: "Build successful: ${currentBuild.fullDisplayName}"
+            slackSend channel: 'team7-africa', color: 'good', message: "Build successful: ${currentBuild.fullDisplayName}"
         }
         failure {
-            slackSend channel: 'ci-cd', color: 'danger', message: "Build failed: ${currentBuild.fullDisplayName}"
+            slackSend channel: 'team7-africa', color: 'danger', message: "Build failed: ${currentBuild.fullDisplayName}"
         }
     }
 }
