@@ -124,5 +124,26 @@ pipeline {
                	}
             }
         }
+
+		stage ('Uploading to Nexus') {
+			steps {
+				nexusArtifactUploader artifacts: [[artifactId: 'maven-web-application', classifier: '', file: '/var/lib/jenkins/workspace/first-build/target/web-app.war', type: 'war']], credentialsId: 'nexus-credentials', groupId: 'com.mt', nexusUrl: '54.160.113.61:8081/', nexusVersion: 'nexus3', protocol: 'http', repository: 'webapp-release', version: '3.0.6-RELEASE'
+			}
+		}
+
+		stage ('Deploy to Tomcat') {
+			steps {
+				deploy adapters: [tomcat9(credentialsId: 'tomcat-credentials', path: '', url: 'http://54.91.43.5:8080/')], contextPath: null, war: 'target/*.war'
+			}
+		}
 	}
+
+	post {
+        success {
+            slackSend channel: 'ci-cd', color: 'good', message: "Build successful: ${currentBuild.fullDisplayName}"
+        }
+        failure {
+            slackSend channel: 'ci-cd', color: 'danger', message: "Build failed: ${currentBuild.fullDisplayName}"
+        }
+    }
 }
