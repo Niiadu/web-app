@@ -137,12 +137,3 @@ pipeline {
 		}
 	}
 
-	post {
-        success {
-            slackSend channel: 'team7-africa', color: 'good', message: "Build successful: ${currentBuild.fullDisplayName}"
-        }
-        failure {
-            slackSend channel: 'team7-africa', color: 'danger', message: "Build failed: ${currentBuild.fullDisplayName}"
-        }
-    }
-}
