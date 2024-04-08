@@ -63,8 +63,7 @@ node{
     stage('BUILD'){
        sh "${MHD}/bin/mvn clean package"
  
-    }
-        
+    }   
     
     stage('deploy'){
   sshagent(['tomcat']) {
