@@ -95,13 +95,13 @@
 	
 	<distributionManagement>
 	    <repository>
-	      <id>nexus</id>
+	      <id>webapp-release</id>
 	      <name>JOMACS Releases Nexus Repository</name>
 	      <url>http://51.20.129.235:8081/repository/webapp-release/</url>
 	    </repository>
 	    
 	    <snapshotRepository>
-	      <id>nexus</id>
+	      <id>webapp-snapshot</id>
 	      <name>JOMACS Snapshot Nexus Repository </name>
 	      <url>http://51.20.129.235:8081/repository/webapp-snapshot/</url>
 	    </snapshotRepository>
